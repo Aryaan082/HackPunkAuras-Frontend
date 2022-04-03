@@ -703,7 +703,7 @@ function App() {
     try {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x89' }],
+        params: [{ chainId: '0x4' }],
       });
     } catch (error) {
       if (error.code === 4902) {
