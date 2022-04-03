@@ -629,8 +629,6 @@ function App() {
   const [connectWalletStatus, setConnectWalletStatus] = useState(false);
   const [numberToMint, setNumberToMint] = useState("");
   const [error, setError] = useState("");
-  const [tokenCount, setTokenCount] = useState(0);
-  const [tokenBalance, setTokenBalance] = useState(0);
   const [transactionHash, setTransacitonHash] = useState("");
 
   useEffect(() => {
@@ -638,10 +636,6 @@ function App() {
       startPollingData();
     }
   }, [selectedAddress]);
-
-  useEffect(() => {
-    connectWallet();
-  }, []);
 
   const numberToMintOnChange = (value) => {
     setError("")
@@ -689,17 +683,6 @@ function App() {
   async function initialize(userAddress) {
     setSelectedAddress(userAddress);
     initializeEthers();
-
-    getTokenCount();
-    getTokenBalance();
-  }
-
-  async function getTokenCount() {
-    setTokenCount(await contract.totalSupply());
-  }
-
-  async function getTokenBalance() {
-    setTokenBalance(await contract.balanceOf(selectedAddress));
   }
 
   async function initializeEthers() {
@@ -759,6 +742,10 @@ function App() {
 
   function resetState() {
     setSelectedAddress(undefined);
+    setConnectWalletStatus(false);
+    setNumberToMint("");
+    setError("");
+    setTransacitonHash("");
   }
 
   async function mint(numPasses) {
@@ -798,8 +785,7 @@ function App() {
     }
 
   async function updateData() {
-    getTokenCount();
-    getTokenBalance();
+    console.log("HI");
   }
 
   return (
@@ -839,7 +825,7 @@ function App() {
               Twitter
             </button>
           </a>
-          {connectWalletStatus ? (
+          {selectedAddress ? (
             <button disabled className='bg-black'>
               {selectedAddress.substring(0,5) + "..." + selectedAddress.substring(38)}
             </button>
