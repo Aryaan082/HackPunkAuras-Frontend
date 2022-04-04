@@ -809,7 +809,7 @@ function App() {
             Hack Punk Auras
           </div>
         </div>
-        <div className='hidden flex flex-row justify-between gap-[30px]'>
+        <div className='hidden md:flex flex-row justify-between gap-[30px]'>
           <a target="_blank" rel="noreferrer" href='https://opensea.io/HackPunks'>
             <button>
               OpenSea
