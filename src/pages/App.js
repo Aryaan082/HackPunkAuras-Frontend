@@ -809,7 +809,7 @@ function App() {
             Hack Punk Auras
           </div>
         </div>
-        <div className='flex flex-row justify-between gap-[30px]'>
+        <div className='hidden flex flex-row justify-between gap-[30px]'>
           <a target="_blank" rel="noreferrer" href='https://opensea.io/HackPunks'>
             <button>
               OpenSea
@@ -836,14 +836,14 @@ function App() {
           )}
         </div>
       </header>
-      <div className='h-[70vh] flex'>
-        <div className='flex flex-row justify-evenly items-center'>
+      <div className='h-[120vh] md:h-[70vh] flex pt-[50px]'>
+        <div className='flex flex-col md:flex-row md:justify-evenly items-center gap-[50px] md:gap-[0px]'>
           <img
             src={heading}
-            className='w-[40%] lg:w-[35%]'
+            className='w-[80%] md:w-[40%] lg:w-[35%]'
             alt='Hack Punk AURAS'
           />
-          <div className='w-[40%] lg:w-[35%] pt-[4%] text-center'>
+          <div className='w-[80%] md:w-[40%] lg:w-[35%] pt-[4%] text-center'>
             <div className='font-bold'>
               ✨ The Hack Punk Auras is a collection of 2,000 NFTs representing our  inner auras ✨
             </div>
@@ -856,52 +856,53 @@ function App() {
               Our mission is to <b>foster a diverse community of young and up-and-coming hackers in all areas of tech</b> ( Hard tech, software, web 3, etc ). Helping them find opportunities at conferences &amp; experiences worldwide 🌎
             </div>
             <br />
-            
-            {connectWalletStatus ? (
-              <div>
-                <div className='flex flex-row justify-evenly'>
-                  {error ? (
-                    <button disabled className='gradient-button cursor-not-allowed'>
-                      Mint {numberToMint ? parseInt(numberToMint) : ""} NFTs
-                    </button>
-                  ) : (
-                    <button className='gradient-button' onClick={() => {
-                      mint(numberToMint)
-                    }}>
-                      Mint {numberToMint ? parseInt(numberToMint) : ""} NFTs
-                    </button>
-                  )}
-                  
-                  <input placeholder="number" value={numberToMint} onChange={numberToMintOnChange} />
-                  
-                </div>
-                <div className='text-[red] pt-[20px]'>
-                  {error}
-                </div>
-                {!transactionHash ? transactionHash : (
-                  <div className='text-sm'>
-                    View your transaction on &nbsp;
-                    <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://rinkeby.etherscan.io/tx/" + transactionHash} target="_blank">
-                      Etherscan
-                    </a>
-                      &nbsp; or check out your NFT on &nbsp;
-                    <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://opensea.io/HackPunks"} target="_blank">
-                       OpenSea
-                    </a>
+            <div className='hidden md:inline'>
+              {connectWalletStatus ? (
+                <div>
+                  <div className='flex flex-row justify-evenly'>
+                    {error ? (
+                      <button disabled className='gradient-button cursor-not-allowed'>
+                        Mint {numberToMint ? parseInt(numberToMint) : ""} NFTs
+                      </button>
+                    ) : (
+                      <button className='gradient-button' onClick={() => {
+                        mint(numberToMint)
+                      }}>
+                        Mint {numberToMint ? parseInt(numberToMint) : ""} NFTs
+                      </button>
+                    )}
+                    
+                    <input placeholder="number" value={numberToMint} onChange={numberToMintOnChange} />
+                    
                   </div>
-                )}
-              </div>
-            ) : (
-              <button className='gradient-button' onClick={connectWallet}>
-                Connect Wallet
-              </button>
-            )}
+                  <div className='text-[red] pt-[20px]'>
+                    {error}
+                  </div>
+                  {!transactionHash ? transactionHash : (
+                    <div className='text-sm'>
+                      View your transaction on &nbsp;
+                      <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://rinkeby.etherscan.io/tx/" + transactionHash} target="_blank">
+                        Etherscan
+                      </a>
+                        &nbsp; or check out your NFT on &nbsp;
+                      <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://opensea.io/HackPunks"} target="_blank">
+                        OpenSea
+                      </a>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <button className='gradient-button' onClick={connectWallet}>
+                  Connect Wallet
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
-      <div className='footer w-[100%] h-[90vh] overflow-hidden bg-repeat-space	bg-cover'>
-        <div className='flex flex-row h-[100%] test-left font-extrabold text-4xl justify-center items-center'>
-          <div className='flex flex-col gap-[50px]'>
+      <div className='footer w-[100%] h-[50vh] md:h-[90vh] overflow-hidden bg-repeat-space	bg-cover'>
+        <div className='flex flex-row w-[100%] h-[100%] test-left font-extrabold text-4xl justify-center items-center'>
+          <div className='flex flex-col gap-[50px] w-[80%] md:w-[fit-content]'>
             <div>
               Join our community of Hackers :) 
             </div>
@@ -909,7 +910,6 @@ function App() {
               We'll see you in <a target="_blank" rel="noreferrer" href='https://discord.gg/nVwgwdbavf' className='underline cursor-pointer'>Discord</a>👋
             </div>
           </div>
-          <div></div>
         </div>
       </div>
     </div>
