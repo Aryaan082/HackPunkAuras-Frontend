@@ -918,7 +918,7 @@ function App() {
               Join our community of Hackers :) 
             </div>
             <div>
-              We'll see you in <a target="_blank" rel="noreferrer" href='https://discord.gg/nVwgwdbavf' className='underline cursor-pointer'>Discord</a>👋
+              We'll see you in <a target="_blank" rel="noreferrer" href='https://discord.gg/nVwgwdbavf' className='underline cursor-pointer'>Discord</a>&nbsp;👋
             </div>
           </div>
         </div>
