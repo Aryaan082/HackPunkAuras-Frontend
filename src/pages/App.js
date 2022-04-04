@@ -616,7 +616,7 @@ const CONTRACT_ABI = [
   }
 ];
 
-const NETWORK_ID = 4; //137
+const NETWORK_ID = 137;
 
 var pollDataInterval;
 var address;
@@ -703,7 +703,7 @@ function App() {
     try {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x4' }],
+        params: [{ chainId: '0x89' }],
       });
     } catch (error) {
       if (error.code === 4902) {
@@ -815,7 +815,7 @@ function App() {
             </div>
           </div>
           <div className='hidden md:flex flex-row justify-between gap-[30px] right-0'>
-            <a target="_blank" rel="noreferrer" href='https://opensea.io/HackPunks'>
+            <a target="_blank" rel="noreferrer" href='https://opensea.io/collection/hackpunksauras-1'>
               <button>
                 OpenSea
               </button>
@@ -891,11 +891,11 @@ function App() {
                     {!transactionHash ? transactionHash : (
                       <div className='text-sm'>
                         View your transaction on &nbsp;
-                        <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://rinkeby.etherscan.io/tx/" + transactionHash} target="_blank">
+                        <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://polygonscan.com/tx/" + transactionHash} target="_blank">
                           Etherscan
                         </a>
                           &nbsp; or check out your NFT on &nbsp;
-                        <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://opensea.io/HackPunks"} target="_blank">
+                        <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://opensea.io/collection/hackpunksauras-1"} target="_blank">
                           OpenSea
                         </a>
                       </div>
