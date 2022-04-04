@@ -802,100 +802,111 @@ function App() {
             textAlign: "left"
         }}
       />
-      <header className='flex flex-row justify-between items-center h-[6.5vh] px-[17.5px]'>
-        <div className='flex flex-row items-center gap-[8px] pt-[5px] pb-[5px]'>
-          <img src={logo} className='h-[30px]' alt="logo" />
-          <div className='font-bold	text-xl'>
-            Hack Punk Auras
+      <header className='fixed w-[100%] bg-[white]'>
+        <div className='flex justify-between items-center h-[6.5vh] px-[17.5px]'>
+          <div className='flex flex-row items-center gap-[8px] pt-[5px] pb-[5px]'>
+            <img
+              src={logo}
+              className='h-[30px]'
+              alt='logo'
+            />
+            <div className='hidden md:inline font-bold	text-xl'>
+              Hack Punk Auras
+            </div>
+          </div>
+          <div className='hidden md:flex flex-row justify-between gap-[30px] right-0'>
+            <a target="_blank" rel="noreferrer" href='https://opensea.io/HackPunks'>
+              <button>
+                OpenSea
+              </button>
+            </a>
+            <a target="_blank" rel="noreferrer" href='https://discord.gg/nVwgwdbavf'>
+              <button>
+                Discord
+              </button>
+            </a>
+            <a target="_blank" rel="noreferrer" href='https://twitter.com/hackpunks'>
+              <button>
+                Twitter
+              </button>
+            </a>
+            {selectedAddress ? (
+              <button disabled className='bg-black'>
+                {selectedAddress.substring(0,5) + "..." + selectedAddress.substring(38)}
+              </button>
+            ) : (
+              <button className='gradient-button' onClick={connectWallet}>
+                Connect Wallet
+              </button>
+            )}
+          </div>
+          <div className='inline md:hidden font-bold text-transparent bg-clip-text bg-gradient-to-br from-violet-500 to-blue-500'>
+            Open On Desktop to Mint
           </div>
         </div>
-        <div className='hidden md:flex flex-row justify-between gap-[30px]'>
-          <a target="_blank" rel="noreferrer" href='https://opensea.io/HackPunks'>
-            <button>
-              OpenSea
-            </button>
-          </a>
-          <a target="_blank" rel="noreferrer" href='https://discord.gg/nVwgwdbavf'>
-            <button>
-              Discord
-            </button>
-          </a>
-          <a target="_blank" rel="noreferrer" href='https://twitter.com/hackpunks'>
-            <button>
-              Twitter
-            </button>
-          </a>
-          {selectedAddress ? (
-            <button disabled className='bg-black'>
-              {selectedAddress.substring(0,5) + "..." + selectedAddress.substring(38)}
-            </button>
-          ) : (
-            <button className='gradient-button' onClick={connectWallet}>
-              Connect Wallet
-            </button>
-          )}
-        </div>
       </header>
-      <div className='h-[120vh] md:h-[70vh] flex pt-[50px]'>
-        <div className='flex flex-col md:flex-row md:justify-evenly items-center gap-[50px] md:gap-[0px]'>
-          <img
-            src={heading}
-            className='w-[80%] md:w-[40%] lg:w-[35%]'
-            alt='Hack Punk AURAS'
-          />
-          <div className='w-[80%] md:w-[40%] lg:w-[35%] pt-[4%] text-center'>
-            <div className='font-bold'>
-              ✨ The Hack Punk Auras is a collection of 2,000 NFTs representing our  inner auras ✨
-            </div>
-            <br />
-            <div>
-              The NFTs serve as <b>support to our community</b> of under-represented founders, engineers, and developers ( aka Hackers 😎 )
-            </div>
-            <br />
-            <div>
-              Our mission is to <b>foster a diverse community of young and up-and-coming hackers in all areas of tech</b> ( Hard tech, software, web 3, etc ). Helping them find opportunities at conferences &amp; experiences worldwide 🌎
-            </div>
-            <br />
-            <div className='hidden md:inline'>
-              {connectWalletStatus ? (
-                <div>
-                  <div className='flex flex-row justify-evenly'>
-                    {error ? (
-                      <button disabled className='gradient-button cursor-not-allowed'>
-                        Mint {numberToMint ? parseInt(numberToMint) : ""} NFTs
-                      </button>
-                    ) : (
-                      <button className='gradient-button' onClick={() => {
-                        mint(numberToMint)
-                      }}>
-                        Mint {numberToMint ? parseInt(numberToMint) : ""} NFTs
-                      </button>
-                    )}
-                    
-                    <input placeholder="number" value={numberToMint} onChange={numberToMintOnChange} />
-                    
-                  </div>
-                  <div className='text-[red] pt-[20px]'>
-                    {error}
-                  </div>
-                  {!transactionHash ? transactionHash : (
-                    <div className='text-sm'>
-                      View your transaction on &nbsp;
-                      <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://rinkeby.etherscan.io/tx/" + transactionHash} target="_blank">
-                        Etherscan
-                      </a>
-                        &nbsp; or check out your NFT on &nbsp;
-                      <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://opensea.io/HackPunks"} target="_blank">
-                        OpenSea
-                      </a>
+      <div className='pt-[6.5vh]'>
+        <div className='h-[120vh] md:h-[70vh] flex pt-[50px]'>
+          <div className='flex flex-col md:flex-row md:justify-evenly items-center gap-[50px] md:gap-[0px]'>
+            <img
+              src={heading}
+              className='w-[80%] md:w-[40%] lg:w-[35%]'
+              alt='Hack Punk AURAS'
+            />
+            <div className='w-[80%] md:w-[40%] lg:w-[35%] pt-[8%] text-center'>
+              <div className='font-bold'>
+                ✨ The Hack Punk Auras is a collection of 2,000 NFTs representing our  inner auras ✨
+              </div>
+              <br />
+              <div>
+                The NFTs serve as <b>support to our community</b> of under-represented founders, engineers, and developers ( aka Hackers 😎 )
+              </div>
+              <br />
+              <div>
+                Our mission is to <b>foster a diverse community of young and up-and-coming hackers in all areas of tech</b> ( Hard tech, software, web 3, etc ). Helping them find opportunities at conferences &amp; experiences worldwide 🌎
+              </div>
+              <br />
+              <div className='hidden md:inline'>
+                {connectWalletStatus ? (
+                  <div>
+                    <div className='flex flex-row justify-evenly'>
+                      {error ? (
+                        <button disabled className='gradient-button cursor-not-allowed'>
+                          Mint {numberToMint ? parseInt(numberToMint) : ""} NFTs
+                        </button>
+                      ) : (
+                        <button className='gradient-button' onClick={() => {
+                          mint(numberToMint)
+                        }}>
+                          Mint {numberToMint ? parseInt(numberToMint) : ""} NFTs
+                        </button>
+                      )}
+                      
+                      <input placeholder="number" value={numberToMint} onChange={numberToMintOnChange} />
+                      
                     </div>
-                  )}
-                </div>
-              ) : (
-                <button className='gradient-button' onClick={connectWallet}>
-                  Connect Wallet
-                </button>
-              )}
+                    <div className='text-[red] pt-[20px]'>
+                      {error}
+                    </div>
+                    {!transactionHash ? transactionHash : (
+                      <div className='text-sm'>
+                        View your transaction on &nbsp;
+                        <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://rinkeby.etherscan.io/tx/" + transactionHash} target="_blank">
+                          Etherscan
+                        </a>
+                          &nbsp; or check out your NFT on &nbsp;
+                        <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://opensea.io/HackPunks"} target="_blank">
+                          OpenSea
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button className='gradient-button' onClick={connectWallet}>
+                    Connect Wallet
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
