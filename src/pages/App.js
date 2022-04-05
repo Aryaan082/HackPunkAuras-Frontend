@@ -894,7 +894,7 @@ function App() {
                       <div className='text-sm'>
                         View your transaction on &nbsp;
                         <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://polygonscan.com/tx/" + transactionHash} target="_blank">
-                          Etherscan
+                          Polygon Scan
                         </a>
                           &nbsp; or check out your NFT on &nbsp;
                         <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://opensea.io/collection/hackpunkauras"} target="_blank">
