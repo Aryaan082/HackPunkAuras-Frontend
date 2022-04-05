@@ -762,7 +762,7 @@ function App() {
     }
   
     const tx = await contract.mint(numPasses, {
-      value: ethers.utils.parseEther("0.1").mul(numPasses).toString(),
+      value: ethers.utils.parseEther("30").mul(numPasses).toString(),
       gasPrice: "40000000000"
     }).catch((message) => {
       console.log(message.code);
