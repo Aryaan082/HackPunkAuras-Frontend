@@ -9,7 +9,7 @@ import '../App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const CONTRACT_ADDRESS = "0xa6aEbD60FBC19fFe76Bd93c7c9f507066cAA02d2";
+const CONTRACT_ADDRESS = "0x39897c6DB432833DEE2E1464545EaBBbAa191FBc";
 const CONTRACT_ABI = [
   {
     "inputs": [
@@ -712,7 +712,7 @@ function App() {
             method: 'wallet_addEthereumChain',
             params: [
               {
-                chainId: '0xA86A',
+                chainId: '0x89',
                 rpcUrl: 'https://api.avax.network/ext/bc/C/rpc',
               },
             ],
@@ -761,10 +761,10 @@ function App() {
       return;
     }
   
-      const tx = await contract.mint(numPasses, {value: ethers.utils.parseEther("0.015").mul(numPasses)}).catch((message) => {
-      if (message.error.code === -32000) {
-        toast.error("Insufficent funds for gas * price. Requires 0.015 ETH per pass.");
-      } else if (message.error.code === -32603) {
+    const tx = await contract.mint(numPasses, {value: ethers.utils.parseEther("30").mul(numPasses).toString()}).catch((message) => {
+      if (message.data.code === -32000) {
+        toast.error("Insufficent funds for gas * price. Requires 30 MATIC per AURA.");
+      } else if (message.data.code === -32603) {
         console.log(message);
         toast.error("Execution reverted. Only 10 passes can be minted per person.");
       }
@@ -815,7 +815,7 @@ function App() {
             </div>
           </div>
           <div className='hidden md:flex flex-row justify-between gap-[30px] right-0'>
-            <a target="_blank" rel="noreferrer" href='https://opensea.io/collection/hackpunksauras-1'>
+            <a target="_blank" rel="noreferrer" href='https://opensea.io/collection/hackpunkauras'>
               <button>
                 OpenSea
               </button>
@@ -895,7 +895,7 @@ function App() {
                           Etherscan
                         </a>
                           &nbsp; or check out your NFT on &nbsp;
-                        <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://opensea.io/collection/hackpunksauras-1"} target="_blank">
+                        <a className="underline decoration-indigo-500 decoration-4 underline-offset-4" href={"https://opensea.io/collection/hackpunkauras"} target="_blank">
                           OpenSea
                         </a>
                       </div>
