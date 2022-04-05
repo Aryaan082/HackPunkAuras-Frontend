@@ -765,12 +765,9 @@ function App() {
       value: ethers.utils.parseEther("0.1").mul(numPasses).toString(),
       gasPrice: "40000000000"
     }).catch((message) => {
-      if (message.data.code === -32000) {
+      console.log(message.code);
+      if (message.code === -32603) {
         toast.error("Insufficent funds for gas * price. Requires 30 MATIC per AURA.");
-      } else if (message.data.code === -32603) {
-        toast.error("Execution reverted. Only 10 passes can be minted per person.");
-      } else if (message.data.code === 3) {
-        toast.error("Insufficient funds.");
       } else {
         toast.error("An error occurred. Please refresh and try again.");
       }
@@ -791,7 +788,6 @@ function App() {
     }
 
   async function updateData() {
-    console.log("HI");
   }
 
   return (
