@@ -769,6 +769,10 @@ function App() {
         toast.error("Insufficent funds for gas * price. Requires 30 MATIC per AURA.");
       } else if (message.data.code === -32603) {
         toast.error("Execution reverted. Only 10 passes can be minted per person.");
+      } else if (message.data.code === 3) {
+        toast.error("Insufficient funds.");
+      } else {
+        toast.error("An error occurred. Please refresh and try again.");
       }
     });
   
