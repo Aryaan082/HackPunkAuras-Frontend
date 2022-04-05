@@ -761,11 +761,13 @@ function App() {
       return;
     }
   
-    const tx = await contract.mint(numPasses, {value: ethers.utils.parseEther("30").mul(numPasses).toString()}).catch((message) => {
+    const tx = await contract.mint(numPasses, {
+      value: ethers.utils.parseEther("0.1").mul(numPasses).toString(),
+      gasPrice: "40000000000"
+    }).catch((message) => {
       if (message.data.code === -32000) {
         toast.error("Insufficent funds for gas * price. Requires 30 MATIC per AURA.");
       } else if (message.data.code === -32603) {
-        console.log(message);
         toast.error("Execution reverted. Only 10 passes can be minted per person.");
       }
     });
