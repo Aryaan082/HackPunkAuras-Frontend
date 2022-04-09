@@ -769,7 +769,7 @@ function App() {
       if (message.code === -32603) {
         toast.error("Insufficent funds for gas * price. Requires 30 MATIC per AURA.");
       } else {
-        toast.error("An error occurred. Please refresh and try again.");
+        toast.error("An error occurred. Please make sure you are connected to Polygon and try again.");
       }
     });
   
